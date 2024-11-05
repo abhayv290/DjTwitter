@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}tweetlist{% endblock title %}
+{% block content %}
+<div class="container">
+    
+    <h1>Welcome to DjX tweetFeed
+    </h1>
+    <a class='btn btn-primary' href="{% url 'tweet_create' %}">New Tweet</a>
+    <div class="mt-5 container d-flex p-2 gap-5">
+        {% for tweet in tweets   %}
+        <div class="card" style="width: 18rem;">
+            {% if tweet.image %}
+            <img src="{{tweet.image.url}}" class="card-img-top" alt="...">
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{tweet.user.username}}</h5>
+                <p class="card-text">{{tweet.text}}</p>
+                {% if tweet.user == user %}
+                <a href="{% url 'tweetEdit' tweet.id %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'tweetDelete' tweet.id %}" class="btn btn-primary">Delete</a>  
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
