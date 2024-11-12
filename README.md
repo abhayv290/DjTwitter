@@ -1,3 +1,5 @@
+site live: https://djtwitter.onrender.com
+
 Important Settings configuration for django 
 setting permission for media files in cpanel 
  chmod -R 777 ./media   ( 777 for anybody ) (755 only or users) 
