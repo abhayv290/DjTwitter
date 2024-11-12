@@ -32,8 +32,7 @@ print(DEBUG)
 SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS') #production
-print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
-# ALLOWED_HOSTS=[]
+
 
 # Application definition
 # SESSION_COOKIE_SECURE = False #prod
@@ -133,7 +132,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 MEDIA_URL = '/media/'
 
