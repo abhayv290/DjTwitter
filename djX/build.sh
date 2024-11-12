@@ -13,5 +13,14 @@ python manage.py migrate
 
 if [[ $CREATE_SUPERUSER ]]
 then 
-    python manage.py createsuperuser --no-input --email "$SUPERUSER_EMAIL"
+    python manage.py shell <<EOF
+from django.contrib.auth import get_user_model
+User = get_user_model()
+if not User.objects.filter(username="$SUPERUSER_USERNAME").exists():
+    User.objects.create_superuser(
+        username="$SUPERUSER_USERNAME",
+        email="$SUPERUSER_EMAIL",
+        password="$SUPERUSER_PASSWORD"
+    )
+EOF
 fi
